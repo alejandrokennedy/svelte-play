@@ -1,31 +1,30 @@
 <script>
-	// shadow, plain, line, bubble
-	import wordmark from "$svg/wordmark-shadow.svg";
+	import cenLogo from "$svg/logo-cen-tagline-red.svg";
 </script>
 
 <header>
-	<div class="wordmark">
-		<a href="https://pudding.cool" aria-label="The Pudding" target="_self"
-			>{@html wordmark}</a
+	<div class="cenLogo">
+		<a href="https://cen.acs.org" aria-label="C&EN" target="_self"
+			>{@html cenLogo}</a
 		>
 	</div>
 </header>
 
 <style>
-	.wordmark {
+	.cenLogo {
 		max-width: 14em;
 		margin: 0 auto;
 		padding: 32px 0;
 		transform: rotate(-4deg);
 	}
 
-	.wordmark a {
+	.cenLogo a {
 		border: none;
 		display: block;
 		color: var(--color-fg);
 	}
 
-	.wordmark a:hover {
+	.cenLogo a:hover {
 		background-color: transparent;
 	}
 </style>
