@@ -14,7 +14,10 @@ const config = {
 	},
 	preprocess,
 	kit: {
-		adapter: adapterStatic({ strict: false })
+		adapter: adapterStatic({ strict: false }),
+		output: {
+			bundleStrategy: "inline"
+		}
 	}
 };
 

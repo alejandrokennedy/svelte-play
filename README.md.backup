@@ -1,31 +1,3 @@
-# ACS/C&EN Svelte Starter
-
-**This is a downstream fork** of [The Pudding's Svelte Starter](https://github.com/the-pudding/svelte-starter), customized for American Chemical Society (ACS) and Chemical & Engineering News (C&EN) data journalism and visualization projects.
-
-## Fork Maintenance Strategy
-
-This fork uses a **Feature Branch Strategy** to stay synchronized with upstream changes:
-
-- **`main` branch**: Clean mirror of upstream for easy merging
-- **`acs-main` branch**: ACS/C&EN customizations (branding, chemistry-specific features)
-- **Upstream sync**: Regular merging from The Pudding's repository to stay current with Svelte 5 migration and new features
-
-### Syncing with Upstream
-```bash
-# Fetch latest upstream changes
-git fetch upstream
-git checkout main
-git merge upstream/main
-
-# Merge upstream changes into ACS customizations
-git checkout acs-main
-git merge main
-```
-
----
-
-## About the Original Template
-
 # Svelte Starter
 
 **NOTE**: This uses Svelte 5 and is under active migration (not all features will work). For the less adventurous, use the [previous version](https://github.com/the-pudding/svelte-starter) (with Svelte 4).
@@ -86,7 +58,7 @@ This generates a directory called `build` with the statically rendered app.
 ### Password-Protected
 To create a password-protected build:
 
-Make sure you have a `.env` file in your root with a value of `PASSWORD=yourpassword`
+Make sure you have a `.env` file in your root with a value of `PASSWORD=yourpassword` 
 ```bash
 make protect
 ```
@@ -212,7 +184,7 @@ import { example } from "$runes/misc/misc.js";
 * `useFetcher`: load async data from endpoints (local or external).
 * `useWindowFocus`: determine if the window is in focus or not.
 
-For more preset runes, use [runed](https://runed.dev/docs) which is preloaded.
+For more preset runes, use [runed](https://runed.dev/docs) which is preloaded. 
 
 ### Utils
 
