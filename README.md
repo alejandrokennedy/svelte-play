@@ -10,17 +10,70 @@ This fork uses a **Feature Branch Strategy** to stay synchronized with upstream 
 - **`acs-main` branch**: ACS/C&EN customizations (branding, chemistry-specific features)
 - **Upstream sync**: Regular merging from The Pudding's repository to stay current with Svelte 5 migration and new features
 
-### Syncing with Upstream
+### Step-by-Step Upstream Sync Process
+
+#### 1. Update Main Branch with Upstream
 ```bash
-# Fetch latest upstream changes
+# Fetch latest changes from upstream
 git fetch upstream
+
+# Switch to main branch and merge upstream changes
 git checkout main
 git merge upstream/main
 
-# Merge upstream changes into ACS customizations
-git checkout acs-main
-git merge main
+# Push updated main to origin
+git push origin main
 ```
+
+#### 2. Safely Merge into ACS Branch
+```bash
+# Switch to acs-main and create a backup
+git checkout acs-main
+git branch acs-main-backup-$(date +%Y%m%d)
+
+# Check what's coming in from main
+git diff acs-main..main --stat
+git diff acs-main..main --name-only
+```
+
+#### 3. Conservative Merge with Visual Conflict Resolution
+```bash
+# Initiate merge (this will create conflicts for manual control)
+git merge main --no-ff
+```
+
+#### 4. Use Zed's Git Tools for Visual Resolution
+- Open **Git Panel**: `git panel: toggle focus` or click Git icon
+- Open **Project Diff**: `Ctrl+G D` / `Cmd+G D` for visual conflict resolution
+- For each conflict:
+  - **Prioritize acs-main changes** (logo, branding, config)
+  - **Accept main's updates** for packages and dependencies
+  - **Edit directly** in Project Diff multibuffer view
+  - **Stage resolved hunks** with `Cmd+Y` / `Alt+Y`
+
+#### 5. Handle Special Cases
+- **Package files**: Accept main's versions entirely with `git checkout --theirs package.json package-lock.json`
+- **Logo/branding**: Keep acs-main versions (your customizations)
+- **pnpm-lock.yaml**: Keep deleted if gitignored, or `git rm pnpm-lock.yaml`
+
+#### 6. Complete the Merge
+```bash
+# Verify all conflicts resolved
+git status
+
+# Commit the merge
+git commit -m "Merge main branch updates, keeping acs-main customizations"
+
+# Verify important files are intact
+ls src/svg/  # Check logo files
+git log --oneline -5  # Review merge history
+```
+
+### Merge Strategy Philosophy
+- **ACS customizations take precedence**: Logo, branding, chemistry-specific features
+- **Accept beneficial upstream updates**: Package versions, security updates, new features
+- **Conservative approach**: Always create backups, resolve conflicts manually
+- **Visual tools**: Use Zed's Project Diff for clear conflict resolution
 
 ---
 
