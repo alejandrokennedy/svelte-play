@@ -54,7 +54,7 @@ git merge main --no-ff
 - **Package files**: Accept main's versions with `git checkout --theirs package.json pnpm-lock.yaml`
 - **Logo/branding**: Keep acs-main versions (your customizations)
 - **package-lock.json**: Remove if present with `git rm package-lock.json` (acs-main uses pnpm)
-- **Regenerate lock file**: Run `pnpm install` after resolving conflicts
+- **Lock file regeneration**: Always run `pnpm install` after accepting `pnpm-lock.yaml` - this adapts the lock file to your platform (Mac ARM64 vs Linux x64) and ensures it matches your actual `node_modules`. Accept upstream's lock as a starting point, then regenerate for your environment.
 
 #### 6. Complete the Merge
 ```bash
