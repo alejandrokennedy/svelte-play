@@ -33,7 +33,6 @@ git branch acs-main-backup-$(date +%Y%m%d)
 
 # Check what's coming in from main
 git diff acs-main..main --stat
-git diff acs-main..main --name-only
 ```
 
 #### 3. Conservative Merge with Visual Conflict Resolution
