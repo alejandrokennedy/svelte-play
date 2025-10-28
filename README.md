@@ -7,7 +7,7 @@
 This fork uses a **Feature Branch Strategy** to stay synchronized with upstream changes:
 
 - **`main` branch**: Clean mirror of upstream for easy merging
-- **`acs-main` branch**: ACS/C&EN customizations (branding, chemistry-specific features)
+- **`acs-main` branch**: ACS/C&EN customizations (branding, chemistry-specific features, **uses pnpm**)
 - **Upstream sync**: Regular merging from The Pudding's repository to stay current with Svelte 5 migration and new features
 
 ### Step-by-Step Upstream Sync Process
@@ -51,14 +51,21 @@ git merge main --no-ff
   - **Stage resolved hunks** with `Cmd+Y` / `Alt+Y`
 
 #### 5. Handle Special Cases
-- **Package files**: Accept main's versions entirely with `git checkout --theirs package.json package-lock.json`
+- **Package files**: Accept main's versions with `git checkout --theirs package.json pnpm-lock.yaml`
 - **Logo/branding**: Keep acs-main versions (your customizations)
-- **pnpm-lock.yaml**: Keep deleted if gitignored, or `git rm pnpm-lock.yaml`
+- **package-lock.json**: Remove if present with `git rm package-lock.json` (acs-main uses pnpm)
+- **Regenerate lock file**: Run `pnpm install` after resolving conflicts
 
 #### 6. Complete the Merge
 ```bash
+# Regenerate dependencies with pnpm
+pnpm install
+
 # Verify all conflicts resolved
 git status
+
+# Stage any updated lock files
+git add pnpm-lock.yaml
 
 # Commit the merge
 git commit -m "Merge main branch updates, keeping acs-main customizations"
@@ -73,6 +80,7 @@ git log --oneline -5  # Review merge history
 - **Accept beneficial upstream updates**: Package versions, security updates, new features
 - **Conservative approach**: Always create backups, resolve conflicts manually
 - **Visual tools**: Use Zed's Project Diff for clear conflict resolution
+- **Package manager**: acs-main uses **pnpm** for better performance and disk efficiency
 
 ---
 
