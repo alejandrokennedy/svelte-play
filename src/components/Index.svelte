@@ -12,8 +12,8 @@
 
 <svelte:boundary onerror={(e) => console.error(e)}>
 	<PlasticsTreaty />
+	<Map /> -->
 	<Demo />
-	<Circles />
-	<Map />
+	<!-- <Circles /> -->
 	<!-- <Footer recirc={true} /> -->
 </svelte:boundary>

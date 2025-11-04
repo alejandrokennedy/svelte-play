@@ -14,7 +14,8 @@
 		}) ?? []
 	);
 	let hoveredCountyId = $state(null);
-	$inspect("hoveredCountyId", hoveredCountyId);
+	// $inspect("hoveredCountyId", hoveredCountyId);
+	$inspect("counties", counties);
 
 	let loading = $state(true);
 	let error = $state<string | null>(null);
