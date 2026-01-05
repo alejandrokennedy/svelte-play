@@ -1,5 +1,8 @@
 <script>
 	import cenLogo from "$svg/logo-cen-tagline-red.svg";
+	import play from "$svg/play.svg";
+	import arrowFooter from "$svg/arrow-footer.svg";
+	import arrowUpRight from "$svg/arrow-up-right.svg";
 </script>
 
 <header>
@@ -8,6 +11,14 @@
 			>{@html cenLogo}</a
 		>
 	</div>
+	<!-- <a href="https://cen.acs.org" aria-label="C&EN" target="_self">{@html play}</a
+	>
+	<a href="https://cen.acs.org" aria-label="C&EN" target="_self"
+		>{@html arrowFooter}</a
+	>
+	<a href="https://cen.acs.org" aria-label="C&EN" target="_self"
+		>{@html arrowUpRight}</a
+	> -->
 </header>
 
 <style>

@@ -5,14 +5,16 @@
 	import Circles from "./practice/Circles.svelte";
 	import PlasticsTreaty from "./plastics-treaty/PlasticsTreaty.svelte";
 	import Demo from "./demo/Demo.svelte";
+	import Components from "$components/practice/canvas/Components.svelte";
 
 	// const copy = getContext("copy");
 	// const data = getContext("data");
 </script>
 
 <svelte:boundary onerror={(e) => console.error(e)}>
+	<Components />
 	<PlasticsTreaty />
-	<Map /> -->
+	<!-- <Map /> -->
 	<Demo />
 	<!-- <Circles /> -->
 	<!-- <Footer recirc={true} /> -->

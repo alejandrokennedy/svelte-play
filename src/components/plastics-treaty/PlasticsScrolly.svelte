@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Scrolly from "$components/helpers/Scrolly.svelte";
 	import worldCountries from "$data/worldCountries.json";
-	import { geoEqualEarth, geoPath } from "d3";
+	import { geoPath } from "d3";
+	import { geoWinkel3 } from "d3-geo-projection";
 	import { feature, mesh } from "topojson-client";
 
 	let value = $state(null);
@@ -10,7 +11,7 @@
 	let geojson = $state(
 		feature(worldCountries, worldCountries.objects.countries)
 	);
-	let projection = $derived(geoEqualEarth().fitSize([width, height], geojson));
+	let projection = $derived(geoWinkel3().fitSize([width, height], geojson));
 	let pathGenerator = $derived(geoPath(projection));
 	let countries = $derived(
 		geojson?.features.map((country) => {
